@@ -21,7 +21,3 @@ date <- '`r format(Sys.Date())`'
 ## tl;dr
 
 A tool that assigns country, rural/urban identifier and longitude/latitude information to full postcodes (e.g. CT2 7NZ) in the UK.
-
-
-## Feedback
-Yannis Galanakis; <galanakis.gian@gmail.com>
