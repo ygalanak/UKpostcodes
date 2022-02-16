@@ -1,14 +1,26 @@
 ---
-author: Yannis Galanakis
-date: '`r format(Sys.Date())`'
-title: UK Postcodes converter
-output: 
-  github_document: default
+output: github_document
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+Title <- "UK Postcodes converter"
+Authors <- "Yannis Galanakis"
+date <- '`r format(Sys.Date())`'
+```
+
+# `r Title`
+[Yannis Galanakis](https://www.yannisgalanakis.com) • University of Kent • <galanakis.gian@gmail.com>
 
 ## tl;dr
 
-A tool that assigns country, rural/urban identifier and longitude/latitude information to full postcodes (e.g. CT2 7NZ) in the UKDriverDeaths
+A tool that assigns country, rural/urban identifier and longitude/latitude information to full postcodes (e.g. CT2 7NZ) in the UK.
 
 
 ## Feedback
