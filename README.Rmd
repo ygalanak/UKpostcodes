@@ -2,7 +2,8 @@
 author: Yannis Galanakis
 date: '`r format(Sys.Date())`'
 title: UK Postcodes converter
-output: github_document()
+output: 
+  github_document: default
 ---
 
 ## tl;dr
