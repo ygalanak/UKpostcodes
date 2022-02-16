@@ -1,0 +1,14 @@
+---
+author: Yannis Galanakis
+date: '`r format(Sys.Date())`'
+title: UK Postcodes converter
+output: md_document
+---
+
+## tl;dr
+
+A tool that assigns country, rural/urban identifier and longitude/latitude information to full postcodes (e.g. CT2 7NZ) in the UKDriverDeaths
+
+
+## Feedback
+Yannis Galanakis; <galanakis.gian@gmail.com>
