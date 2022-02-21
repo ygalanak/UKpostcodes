@@ -1,4 +1,10 @@
-
+#------------------------------------------------------------------------------------------------------#
+# UK postcodes
+# Yannis Galanakis; <galanakis.gian@gmail.com>
+# Created: Feb 15, 2022
+# Revised: Feb 21, 2022
+# Objective: (1) Append postcode files, (2) assign rural/urban class, country and county names and (3) export to .csv
+#------------------------------------------------------------------------------------------------------#
 
 # Set Project Options ----
 options(
@@ -15,7 +21,7 @@ pacman::p_load(
   "lubridate"
 )
 
-# append files -----
+# append postcode .csv files ----
 features <-list.files(path = 'data/input/postcodes/codes/', pattern='*.csv', recursive=TRUE,
                       full.names = TRUE) %>% 
   # read csv and rbind
@@ -24,13 +30,13 @@ features <-list.files(path = 'data/input/postcodes/codes/', pattern='*.csv', rec
            mutate(`ru11ind` = as.character(`ru11ind`),
                   `oseast1m`= as.character(`oseast1m`),
                   `osnrth1m`= as.character(`osnrth1m`)))
-
+# rename
 names(features)[names(features) == 'pcds'] <- 'postcode'
 
 # keep only relevant columns to the final df
 features_short <- features[c("postcode", "ru11ind", "oac11", "lat", "long", "cty", "ctry")]
 
-# Output Area Classifications; Includes Rural & Urban Demarcations ----
+# Output Area Classifications ----
 oac11 <- fread(file = 'data/input/postcodes/dictionaries/2011_output_area_classification_uk.csv',
                select = c('OAC11', 'Supergroup', 'Group'), strip.white = TRUE,
                colClasses = c(OAC11 = 'character', Supergroup = 'character', Group = 'character'),
@@ -38,8 +44,6 @@ oac11 <- fread(file = 'data/input/postcodes/dictionaries/2011_output_area_classi
 names(oac11) <- c('oac11', 'oac_supergroup', 'oac_group')
 oac11$oac_supergroup <- tolower(oac11$oac_supergroup)
 oac11$oac_group <- tolower(oac11$oac_group)
-
-
 
 # Rural Urban Classifications ----
 ru11ind <- fread(file = 'data/input/postcodes/dictionaries/2011_rural_urban_indicator_gb.csv',
@@ -66,9 +70,6 @@ descriptions <- features_short %>%
   left_join(y = ru11ind, by = 'ru11ind') %>%
   left_join(y = cty, by = 'cty') %>%
   left_join(y = ctry, by = 'ctry')
-
-
-
 
 # export as csv
 fwrite(x = descriptions, file = "data/output/geographic.csv")
