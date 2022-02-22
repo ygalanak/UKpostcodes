@@ -73,3 +73,10 @@ descriptions <- features_short %>%
 
 # export as csv
 fwrite(x = descriptions, file = "data/output/geographic.csv")
+# export as rds
+saveRDS(descriptions, file = "data/output/UKpostcodes.rds")
+#------------------------------------------------------------------------------#
+
+# remove identifier code variables
+## it reduces the size of the resulting data frame 
+descriptions_2 <- descriptions[-c(2:3, 6:7)]
