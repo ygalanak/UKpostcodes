@@ -1,4 +1,8 @@
 
+
+[![DOI](https://zenodo.org/badge/459953364.svg)](https://zenodo.org/badge/latestdoi/459953364)
+
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # UK Postcodes converter
